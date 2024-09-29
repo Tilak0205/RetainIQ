@@ -2,7 +2,9 @@
 
 Install the dependencies
 
-```npm install```
+```bash
+npm install
+```
 
 Run the development server:
 
