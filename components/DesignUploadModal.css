@@ -1,0 +1,77 @@
+/* DesignUploadModal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    color: black;
+  }
+  
+  .image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+    justify-items: center;
+  }
+  
+  
+  .image-item {
+    width: 100px;
+    height: 100px;
+    object-fit: fill;
+    cursor: pointer;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .image-item:hover {
+    transform: scale(1.05);
+    border-color: #007bff;
+  }
+  
+  .upload-section {
+    margin-top: 20px;
+  }
+  
+  .custom-file-upload {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .file-upload {
+    margin-top: 10px;
+  }
+  
+  .close-button {
+    margin-top: 20px;
+    padding: 5px 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #0056b3;
+  }
+  

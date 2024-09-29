@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Basic table styles with Tailwind */
+.table-container {
+    @apply w-full p-4;
+  }
+.table {
+    @apply table-auto w-full;
+}
+.controls {
+    @apply mb-4 flex justify-between;
+}
+button {
+    @apply bg-blue-500 text-white px-4 py-2 rounded;
+}
+
