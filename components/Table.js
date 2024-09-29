@@ -5,6 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlus, faGripVertical, faEllipsisV, faPen } from '@fortawesome/free-solid-svg-icons';
 import DesignUploadModal from './DesignUploadModal';
+import Image from 'next/image';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ROW_TYPE = 'row';
@@ -78,7 +79,7 @@ const DraggableRow = ({ row, index, moveRow, deleteRow, children, addVariantColu
 
 
 
-const DraggableVariant = ({ variant, rowIndex, variantIndex, moveVariant, handleDesignUpload, handleOpenDialog }) => {
+const DraggableVariant = ({ variant, rowIndex, variantIndex, moveVariant, handleOpenDialog }) => {
   const [, ref] = useDrag({
     type: VARIANT_TYPE,
     item: { rowIndex, variantIndex },
@@ -101,16 +102,24 @@ const DraggableVariant = ({ variant, rowIndex, variantIndex, moveVariant, handle
     >
       {variant.image ? (
         <div className="relative w-full h-full">
-          <img src={variant.image} alt={variant.title} className="h-36 w-full object-fill mb-2 rounded-md" />
-          <p style={{ color: '#000' }}>{variant.title}</p>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <FontAwesomeIcon
-              icon={faPen}
-              className="text-white bg-black p-2 rounded-full cursor-pointer"
-              onClick={() => handleOpenDialog(rowIndex, variantIndex)}
-            />
-          </div>
+        <Image
+          src={variant.image}
+          alt={variant.title}
+          layout='fill'
+          objectFit='cover'
+          className="rounded-md h-36"
+        />
+        <div className="absolute bottom-0 left-0 w-full p-1 bg-white bg-opacity-90">
+          <p className="text-center text-sm text-gray-900 truncate">{variant.title}</p>
         </div>
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <FontAwesomeIcon
+            icon={faPen}
+            className="text-white bg-black p-2 rounded-full cursor-pointer"
+            onClick={() => handleOpenDialog(rowIndex, variantIndex)}
+          />
+        </div>
+      </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-full">
           <span className="text-gray-400 text-sm mb-2">No Design</span>
@@ -308,15 +317,6 @@ const Table = () => {
                       const [movedVariant] = updatedVariants.splice(fromIndex, 1);
                       updatedVariants.splice(toIndex, 0, movedVariant);
                       updatedRows[rowIndex].variants = updatedVariants;
-                      setRows(updatedRows);
-                    }}
-                    handleDesignUpload={(e, rowIndex, variantIndex) => {
-                      const file = e.target.files[0];
-                      if (!file) return;
-                      const updatedRows = [...rows];
-                      const imageUrl = URL.createObjectURL(file);
-                      updatedRows[rowIndex].variants[variantIndex].image = imageUrl;
-                      updatedRows[rowIndex].variants[variantIndex].title = file.name;
                       setRows(updatedRows);
                     }}
                     handleOpenDialog={handleOpenDialog}

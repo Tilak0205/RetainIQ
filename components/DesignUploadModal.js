@@ -1,4 +1,5 @@
 import './DesignUploadModal.css';
+import Image from 'next/image';
 
 const DesignUploadModal = ({ isOpen, onRequestClose, onImageSelect, images }) => {
   if (!isOpen) return null;
@@ -17,15 +18,17 @@ const DesignUploadModal = ({ isOpen, onRequestClose, onImageSelect, images }) =>
         <h2>Select or Upload an Image</h2>
         
         <div className="image-list">
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`img${index + 1}`}
-              className="image-item"
-              onClick={() => onImageSelect(image)}
+        {images.map((image, index) => (
+            <Image
+                key={index}
+                src={image}
+                alt={`img${index + 1}`}
+                className="image-item"
+                onClick={() => onImageSelect(image)}
+                width={500}  // Set appropriate width
+                height={500} // Set appropriate height
             />
-          ))}
+        ))}
         </div>
 
         <div className="upload-section">
