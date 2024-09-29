@@ -16,5 +16,16 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+Functionalities implemented:
+Add/Delete a State ✅
+Add/Delete Variant Columns ✅
+Row Reordering ✅
+Design Insertion (Optional) ✅
+Eye for perfection (horitzontal scroll) ✅
+
 
 This is the vercel link: https://retain-iq-jpd3.vercel.app/
+
+Here is the video link: https://drive.google.com/file/d/1kHtZHFTvsDyQxob1gUdfNnIlwBrTEFoJ/view?usp=sharing
+
+
